@@ -1,0 +1,464 @@
+/* Global Reset */
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Body Styling */
+  body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh; /* Use min-height to allow expansion */
+    justify-content: center;
+    align-items: center;
+    background: radial-gradient(50% 123.47% at 50% 50%, #660eb8 0%, #7c7818 100%),
+      linear-gradient(121.28deg, #669600 0%, #69e00e 100%),
+      linear-gradient(360deg, #864510 0%, #dc0bd895 100%),
+      radial-gradient(100% 164.72% at 100% 100%, #6100ff 0%, #00ff57 100%),
+      radial-gradient(100% 148.07% at 0% 0%, #fff500 0%, #8e0d81 100%);
+    background-blend-mode: screen, color-dodge, overlay, difference, normal; 
+    /* Remove overflow hidden so that if the container exceeds the viewport, the page can scroll */
+    -webkit-overflow-scrolling: smooth;
+  }
+  
+  /* Container remains auto height */
+  .container {
+    border: none;
+    border-radius: 15px;
+    background-color: rgba(0, 0, 0, 0.26);
+    width: 32vw;
+    /* Height is auto so the container adapts to its content */
+    height: auto;
+    /* Optionally, you can set a max-height to prevent it from growing too tall */
+    max-height: 90vh;
+    overflow: auto; /* If the container ever exceeds max-height, it will scroll */
+    box-shadow: 4px 5px 6px;
+    padding: 10px;
+  }
+  
+  .container::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  .container::-webkit-scrollbar-thumb {
+    background-color: #9ecaed;
+    border-radius: 4px;
+    transition: background-color 0.3s ease; /* Smooth transition for scrollbar thumb color */
+  }
+  
+  .container::-webkit-scrollbar-thumb:hover {
+    background-color: #6ea8d6; /* Change color on hover */
+  }
+  
+  /* Heading Styling */
+  .heading {
+    color: white;
+    text-shadow: 2px 3px 4px black;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.7em;
+    font-weight: 900;
+    border-bottom: 2px solid white;
+    margin-bottom: 20px;
+  }
+  
+  /* Add Task Section Layout */
+  .add-task {
+    display: flex;
+    justify-content: space-evenly;
+  }
+  
+  /* Input Field Styling */
+  input {
+    padding: 7px;
+    border: 2px solid #dadada;
+    border-radius: 7px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus effects */
+  }
+  
+  input:focus {
+    outline: none;
+    border-color: #9ecaed;
+    box-shadow: 0 0 10px #9ecaed;
+  }
+  
+  /* Button Styling */
+  button {
+    background-color: transparent;
+    padding: 4px;
+    border: 2px solid #9ecaed;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight: 600;
+  }
+  
+  button:hover {
+    color: #fff;
+    background-color: #9ecaed; /* Add a background color on hover */
+    box-shadow: 0 0 10px #9ecaed, 0 0 30px #9ecaed, 0 0 60px #9ecaed;
+  }
+  
+  /* Task List Styling */
+  ul {
+    list-style: none;
+    padding: 15px;
+    /* Set a maximum height for your task list */
+    max-height: 50vh; /* Adjust to suit your design */
+    overflow-y: auto;
+    scroll-behavior: smooth;
+  }
+  #checkbox{
+    height: 50%;
+  }
+  li {
+    gap: 4px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid white;
+    border-radius: 5px;
+    padding: 8px;
+    margin-bottom: 7px;
+    transition: transform 0.2s ease, background-color 0.3s ease; /* Smooth transition for hover effects */
+  }
+
+  li:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Slight background change on hover */
+    transform: scale(1.02); /* Slightly enlarge the list item on hover */
+  }
+
+  footer {
+    margin-top: auto; /* Pushes footer to the bottom */
+    font-size: 20px;
+    color: #fff;
+  }
+
+  /* For devices with width up to 991px */
+@media screen and (max-width: 991px) {
+  body {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 15px; /* Add padding for better spacing on medium screens */
+  }
+
+  .container {
+    width: 80vw; /* Adjust container width for medium screens */
+    max-height: 85vh; /* Ensure it stays scrollable if needed */
+    padding: 20px; /* Add padding for better spacing */
+  }
+
+  .heading {
+    font-size: 1.6em; /* Slightly reduce heading size */
+    text-align: center; /* Ensure heading is centered */
+    margin-bottom: 20px; /* Add spacing below the heading */
+  }
+
+  input {
+    width: 65%; /* Expand input to fit better on medium screens */
+    margin-bottom: 15px; /* Add spacing below the input field */
+  }
+
+  button {
+    width: auto; /* Allow buttons to adjust to their content */
+    padding: 8px 14px; /* Adjust padding for better usability */
+    font-size: 15px; /* Slightly reduce font size */
+  }
+
+  li {
+    flex-direction: row; /* Align items horizontally */
+    align-items: center; /* Center-align text and buttons */
+    margin-bottom: 12px; /* Add spacing between tasks */
+    padding: 10px; /* Add padding inside each task item */
+  }
+
+  /* Task List Items for Medium Screens */
+  #taskList li {
+    display: flex; /* Align text and buttons horizontally */
+    align-items: center; /* Center-align text and buttons */
+    margin-bottom: 12px; /* Add spacing between tasks */
+  }
+
+  #taskList li span {
+    flex-grow: 1; /* Take up remaining space */
+    margin-right: 12px; /* Add space between text and buttons */
+  }
+
+  #taskList li button {
+    padding: 6px 10px; /* Slightly smaller buttons for medium screens */
+    margin-left: 6px; /* Add space between buttons */
+    font-size: 13px; /* Reduce font size slightly */
+    cursor: pointer; /* Add pointer cursor for better UX */
+  }
+}
+
+/* For tablets (width up to 768px) */
+@media screen and (max-width: 768px) {
+  body {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px; /* Add padding for better spacing on smaller screens */
+  }
+
+  .container {
+    width: 90vw; /* Adapt container width for tablets */
+    max-height: 85vh; /* Ensure it stays scrollable if needed */
+    padding: 15px; /* Add padding for better spacing */
+  }
+
+  .heading {
+    font-size: 1.5em; /* Slightly reduce heading size */
+    text-align: center; /* Ensure heading is centered */
+    margin-bottom: 15px; /* Add spacing below the heading */
+  }
+
+  input {
+    width: 65%; /* Expand input to fit better on smaller screens */
+    margin-bottom: 10px; /* Add spacing below the input field */
+  }
+
+  button {
+    width: auto; /* Allow buttons to adjust to their content */
+    padding: 6px 12px; /* Adjust padding for better usability */
+    font-size: 14px; /* Slightly reduce font size */
+  }
+
+  li {
+    flex-direction: row; /* Align items horizontally */
+    align-items: center; /* Center-align text and buttons */
+    margin-bottom: 10px; /* Add spacing between tasks */
+    padding: 8px; /* Add padding inside each task item */
+  }
+
+  /* Task List Items for Tablets */
+  #taskList li {
+    display: flex; /* Align text and buttons horizontally */
+    align-items: center; /* Center-align text and buttons */
+    margin-bottom: 10px; /* Add spacing between tasks */
+  }
+
+  #taskList li span {
+    flex-grow: 1; /* Take up remaining space */
+    margin-right: 10px; /* Add space between text and buttons */
+  }
+
+  #taskList li button {
+    padding: 5px 8px; /* Slightly smaller buttons for tablets */
+    margin-left: 5px; /* Add space between buttons */
+    font-size: 12px; /* Reduce font size for tablets */
+    cursor: pointer; /* Add pointer cursor for better UX */
+  }
+}
+
+/* For mobile phones (width up to 430px) */
+@media screen and (max-width: 430px) {
+  body {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 10px;
+  }
+
+  .container {
+    width: 85vw; /* Maximize container width for mobile */
+    max-height: auto; /* Allow height to adapt for better scrolling */
+  }
+
+  .heading {
+    font-size: 1.2em; /* Further reduce heading size for mobile */
+  }
+
+  input {
+    width: 100%; /* Maximize input width for mobile */
+    
+  }
+
+  button {
+    width: 50%; /* Make button full-width for easier interaction */
+    height: 30px; /* Adjust button height for mobile */
+    margin-left: 5px;
+    margin-top: 2px;
+  }
+  
+  li input{
+    border: none;
+    outline: none;
+    margin-top: 10px;
+    display: block;
+    width: 5%;
+  }
+  li button{
+    width: 20%;
+  }
+  li {
+    display: inline-block;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  footer {
+    font-size: 16px; /* Adjust footer size for mobile readability */
+  }
+
+  /* Task List Items for Mobile */
+  #taskList li {
+    display: flex; /* Align text and buttons horizontally */
+    align-items: center; /* Center-align text and buttons */
+    margin-bottom: 8px; /* Slightly smaller spacing for mobile */
+  }
+
+  #taskList li span {
+    flex-grow: 1; /* Take up remaining space */
+    margin-right: 8px; /* Add space between text and buttons */
+  }
+
+  #taskList li button {
+    padding: 4px 6px; /* Smaller buttons for mobile */
+    margin-left: 4px; /* Add space between buttons */
+    font-size: 10px; /* Reduce font size for mobile */
+    cursor: pointer; /* Add pointer cursor for better UX */
+  }
+}
+
+/* Style for the task list items */
+#taskList li {
+    display: flex; /* Align text and buttons horizontally */
+    align-items: center; /* Center-align text and buttons */
+    margin-bottom: 10px; /* Add spacing between tasks */
+}
+
+/* Style for the task text */
+#taskList li span {
+    flex-grow: 1; /* Take up remaining space */
+    margin-right: 10px; /* Add space between text and buttons */
+}
+
+/* Style for the buttons */
+#taskList li button {
+    padding: 5px 10px; /* Make buttons smaller */
+    margin-left: 5px; /* Add space between buttons */
+    font-size: 12px; /* Reduce font size */
+    cursor: pointer; /* Add pointer cursor for better UX */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
+}
+
+#taskList li button:hover {
+    background-color: #9ecaed;
+    color: #fff;
+}
+
+/* Animation for adding a task */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Animation for deleting a task */
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+        transform: scale(1);
+    }
+    to {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}
+
+/* Apply fade-in animation when a task is added */
+.task-item {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Delete Button Styling */
+.delete-btn {
+    background: none;
+    border: none;
+    color: #ff4d4d; /* Red color for the delete icon */
+    cursor: pointer;
+    font-size: 1.2em; /* Adjust icon size */
+    transition: transform 0.2s ease, color 0.3s ease; /* Add hover effects */
+}
+
+.delete-btn:hover {
+    color: #ff1a1a; /* Darker red on hover */
+    transform: scale(1.2); /* Slightly enlarge the icon on hover */
+}
+
+/* Edit Button Styling */
+.edit-btn {
+    background: none;
+    border: none;
+    color: #4caf50; /* Green color for the edit icon */
+    cursor: pointer;
+    font-size: 1.2em; /* Adjust icon size */
+    transition: transform 0.2s ease, color 0.3s ease; /* Add hover effects */
+}
+
+.edit-btn:hover {
+    color: #388e3c; /* Darker green on hover */
+    transform: scale(1.2); /* Slightly enlarge the icon on hover */
+}
+
+/* Task List Styling */
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+.task-item:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.02);
+}
+
+/* Checkbox Styling */
+.completed-checkbox {
+    margin-right: 10px;
+    cursor: pointer;
+    transform: scale(1.2); /* Slightly larger checkbox */
+}
+
+/* Edit Button Styling */
+.edit-btn {
+    background: none;
+    border: none;
+    color: #4caf50; /* Green color for the edit icon */
+    cursor: pointer;
+    font-size: 1.2em; /* Adjust icon size */
+    margin-left: 10px;
+    transition: transform 0.2s ease, color 0.3s ease; /* Add hover effects */
+}
+
+.edit-btn:hover {
+    color: #388e3c; /* Darker green on hover */
+    transform: scale(1.2); /* Slightly enlarge the icon on hover */
+}
+
+/* Delete Button Styling */
+.delete-btn {
+    background: none;
+    border: none;
+    color: #ff4d4d; /* Red color for the delete icon */
+    cursor: pointer;
+    font-size: 1.2em; /* Adjust icon size */
+    margin-left: 10px;
+    transition: transform 0.2s ease, color 0.3s ease; /* Add hover effects */
+}
+
+.delete-btn:hover {
+    color: #ff1a1a; /* Darker red on hover */
+    transform: scale(1.2); /* Slightly enlarge the icon on hover */
+}
